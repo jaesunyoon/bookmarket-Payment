@@ -15,6 +15,7 @@ public class Payment {
     private String status;
     private Long customerId;
     private String paymentStatus;
+    private String isMile;
 
     @PostPersist
     public void onPostPersist() throws InterruptedException {
@@ -22,7 +23,6 @@ public class Payment {
         Paid paid = new Paid();
         BeanUtils.copyProperties(this, paid);
         paid.publishAfterCommit();
-        Thread.sleep(3000);
 
     }
 
@@ -74,4 +74,11 @@ public class Payment {
         this.paymentStatus = paymentStatus;
     }
 
+    public String getIsMile() {
+        return isMile;
+    }
+
+    public void setIsMile(String isMile) {
+        this.isMile = isMile;
+    }
 }
